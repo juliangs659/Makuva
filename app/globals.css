@@ -1,0 +1,219 @@
+/* Remove or comment out the @import statement */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+    --primary: 142.1 76.2% 36.3%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 60 4.8% 95.9%;
+    --secondary-foreground: 24 9.8% 10%;
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 142.1 76.2% 36.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
+    --primary: 142.1 70.6% 45.3%;
+    --primary-foreground: 144.9 80.4% 10%;
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 142.4 71.8% 29.2%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+      "Open Sans", "Helvetica Neue", sans-serif;
+  }
+}
+
+.mapboxgl-map {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+}
+
+.mapboxgl-popup-content {
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s infinite;
+}
+
+/* Gradientes y efectos */
+.bg-gradient-primary {
+  @apply bg-gradient-to-r from-blue-500 to-purple-600;
+}
+
+.bg-gradient-accent {
+  @apply bg-gradient-to-r from-purple-500 to-pink-500;
+}
+
+.bg-gradient-hero {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),
+    url("/placeholder.svg?height=600&width=1200");
+  background-size: cover;
+  background-position: center;
+}
+
+.glass-effect {
+  @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-white/20 dark:border-gray-700/20;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+}
+
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Efecto de hover para botones */
+.btn-hover-effect {
+  @apply relative overflow-hidden transition-all duration-300;
+}
+
+.btn-hover-effect::after {
+  content: "";
+  @apply absolute inset-0 bg-white opacity-0 transition-opacity duration-300;
+}
+
+.btn-hover-effect:hover::after {
+  @apply opacity-20;
+}
+
+/* Efecto de parallax para el fondo */
+.parallax-bg {
+  @apply fixed inset-0 bg-cover bg-center;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Efecto de "scroll reveal" */
+.scroll-reveal {
+  @apply opacity-0 translate-y-10 transition-all duration-700;
+}
+
+.scroll-reveal.active {
+  @apply opacity-100 translate-y-0;
+}
+
+/* Estilos personalizados */
+.bg-gradient-makuva {
+  @apply bg-gradient-to-r from-makuva-600 to-makuva-400;
+}
+
+.bg-gradient-ember {
+  @apply bg-gradient-to-r from-ember-600 to-ember-400;
+}
+
+.bg-gradient-river {
+  @apply bg-gradient-to-r from-river-600 to-river-400;
+}
+
+.text-gradient-makuva {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-makuva-600 to-makuva-400;
+}
+
+.border-gradient-makuva {
+  @apply border-2 border-transparent bg-clip-border;
+  background-image: linear-gradient(to right, theme("colors.makuva.600"), theme("colors.makuva.400"));
+}
+
